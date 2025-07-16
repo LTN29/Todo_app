@@ -15,7 +15,6 @@ const Todo = () => {
         }
     }
 
-
     return (
         <div>
           <h1>Danh sach to_do</h1>

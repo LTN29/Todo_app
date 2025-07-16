@@ -4,6 +4,7 @@ import com.backend.app.dto.TodoRequest;
 import com.backend.app.dto.TodoResponse;
 import com.backend.app.service.TodoService;
 import com.backend.app.service.impl.TodoServiceImpl;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class TodoController {
     private final TodoService todoService;
 
 
-    public TodoController(TodoService todoService) {
+    public TodoController(@Qualifier("todoServiceImpl") TodoService todoService) {
         this.todoService = todoService;
     }
 
@@ -40,12 +41,14 @@ public class TodoController {
         return new ResponseEntity<>(todoRequest1, HttpStatus.OK);
 
     }
+
     @GetMapping("/")
     public ResponseEntity<List<TodoResponse>> getAll(){
         List<TodoResponse> listTodo =todoService.getAllTodo();
         return new ResponseEntity<>(listTodo,HttpStatus.OK);
 
     }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Integer id){
         todoService.deleteTodo(id);

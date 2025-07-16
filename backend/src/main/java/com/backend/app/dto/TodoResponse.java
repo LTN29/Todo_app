@@ -3,7 +3,6 @@ package com.backend.app.dto;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
